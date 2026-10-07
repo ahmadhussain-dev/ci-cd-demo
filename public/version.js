@@ -12,7 +12,7 @@
  */
 window.RELEASES = [
   {
-     version: "2.0.0",
+     version: "4.0.0",
      date: "2026-10-07",
      title: "Green theme/ Light Theme",
      changes: [
