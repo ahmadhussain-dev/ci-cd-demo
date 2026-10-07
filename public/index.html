@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CI/CD Demo</title>
+  <meta name="description" content="A tiny website used to demonstrate version control and CI/CD with GitHub Actions and Vercel.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+
+    <header class="hero">
+      <p class="eyebrow">Hello Class Its version control ...</p>
+      <h1>Hello CI/CD 🚀</h1>
+      <p class="lead">
+        Every time code is pushed to GitHub, it is tested and
+        deployed here automatically. No manual uploads.
+      </p>
+      <div class="version-badge" aria-live="polite">
+        <span class="version-label">Current version</span>
+        <span id="current-version" class="version-number">–</span>
+        <span id="current-title" class="version-title"></span>
+      </div>
+    </header>
+
+    <section class="card" aria-labelledby="pipeline-heading">
+      <h2 id="pipeline-heading">How this page got here</h2>
+      <ol class="pipeline">
+        <li><span class="step-icon">1</span><span><strong>Commit</strong>A developer commits a change with Git</span></li>
+        <li><span class="step-icon">2</span><span><strong>Push</strong>The commit is pushed to GitHub</span></li>
+        <li><span class="step-icon">3</span><span><strong>CI: Test</strong>GitHub Actions runs the automated tests</span></li>
+        <li><span class="step-icon">4</span><span><strong>CD: Deploy</strong>If tests pass, Vercel publishes the site</span></li>
+      </ol>
+    </section>
+
+    <section class="card" aria-labelledby="build-heading">
+      <h2 id="build-heading">Live deployment info</h2>
+      <p class="muted">Written by Vercel at deploy time. It matches a commit on GitHub.</p>
+      <dl id="build-info" class="build-info">
+        <!-- Filled in by app.js -->
+      </dl>
+    </section>
+
+    <section class="card" aria-labelledby="history-heading">
+      <h2 id="history-heading">Release history</h2>
+      <p class="muted">Read from <code>public/version.js</code>. Add a release there, push, and watch it appear.</p>
+      <ol id="release-list" class="releases">
+        <!-- Filled in by app.js -->
+      </ol>
+    </section>
+
+    <footer class="footer">
+      Built for a DevOps lecture on version control and CI/CD.
+    </footer>
+  </main>
+
+  <script src="version.js"></script>
+  <!-- build-info.js is generated during the Vercel build; it does not exist locally -->
+  <script src="build-info.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

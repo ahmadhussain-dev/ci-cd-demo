@@ -1,0 +1,306 @@
+/*
+ * Demo tip: change --accent below, commit, and push.
+ * The new colour shows up on the live site after the pipeline finishes.
+ */
+:root {
+    --accent: #f7ca01;
+    --accent-soft: #ccfbf1;
+    --bg: #f4f4f5;
+    --surface: #ffffff;
+    --text: #18181b;
+    --muted: #52525b;
+    --border: #e4e4e7;
+    --ok: #15803d;
+    --ok-soft: #dcfce7;
+    --warn: #a16207;
+    --warn-soft: #fef9c3;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --accent: #2dd4bf;
+        --accent-soft: #134e4a;
+        --bg: #09090b;
+        --surface: #18181b;
+        --text: #f4f4f5;
+        --muted: #a1a1aa;
+        --border: #27272a;
+        --ok: #4ade80;
+        --ok-soft: #14532d;
+        --warn: #facc15;
+        --warn-soft: #422006;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+}
+
+a {
+    color: var(--accent);
+}
+
+code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.9em;
+    background: var(--accent-soft);
+    padding: 1px 6px;
+    border-radius: 4px;
+}
+
+.container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+    text-align: center;
+    padding: 16px 0 8px;
+}
+
+.eyebrow {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+}
+
+h1 {
+    font-size: clamp(36px, 8vw, 52px);
+    margin: 8px 0;
+}
+
+.lead {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto 24px;
+}
+
+.version-badge {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 16px 32px;
+    border-radius: 16px;
+    background: var(--accent);
+    color: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+    .version-badge {
+        color: #042f2e;
+    }
+}
+
+.version-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.85;
+}
+
+.version-number {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.version-title {
+    font-size: 15px;
+}
+
+/* ---------- Cards ---------- */
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.card h2 {
+    margin: 0 0 4px;
+    font-size: 22px;
+}
+
+.muted {
+    color: var(--muted);
+    margin: 0 0 16px;
+    font-size: 15px;
+}
+
+/* ---------- Pipeline steps ---------- */
+
+.pipeline {
+    list-style: none;
+    margin: 16px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+}
+
+.pipeline li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.pipeline strong {
+    display: block;
+    color: var(--text);
+    font-size: 15px;
+}
+
+.step-icon {
+    flex: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    font-size: 14px;
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+/* ---------- Build info ---------- */
+
+.build-info {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 8px 20px;
+    margin: 0;
+    font-size: 15px;
+}
+
+.build-info dt {
+    color: var(--muted);
+}
+
+.build-info dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.pill {
+    display: inline-block;
+    padding: 1px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.pill-production {
+    background: var(--ok-soft);
+    color: var(--ok);
+}
+
+.pill-preview,
+.pill-local {
+    background: var(--warn-soft);
+    color: var(--warn);
+}
+
+/* ---------- Release history ---------- */
+
+.releases {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.release {
+    position: relative;
+    padding: 0 0 20px 28px;
+    border-left: 2px solid var(--border);
+    margin-left: 7px;
+}
+
+.release:last-child {
+    padding-bottom: 0;
+}
+
+.release::before {
+    content: "";
+    position: absolute;
+    left: -9px;
+    top: 4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 2px solid var(--border);
+}
+
+.release.is-current::before {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.release-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 12px;
+}
+
+.release-version {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.release-date {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.release-title {
+    margin: 2px 0 6px;
+    font-weight: 600;
+}
+
+.release ul {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--muted);
+    font-size: 15px;
+}
+
+.footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+@media (max-width: 480px) {
+    .build-info {
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+
+    .build-info dd {
+        margin-bottom: 10px;
+    }
+}

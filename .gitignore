@@ -1,0 +1,10 @@
+# Generated during the Vercel build
+public/build-info.js
+
+# Vercel local files
+.vercel
+
+node_modules
+
+# PowerPoint lock files (created while a deck is open)
+~$*

@@ -1,0 +1,23 @@
+name: CI/CD Pipeline
+
+# Runs every time you push to the main branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: CI - Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v6
+
+      - name: Install Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Run tests
+        run: npm test
